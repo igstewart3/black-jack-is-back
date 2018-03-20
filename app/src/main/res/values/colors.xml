@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="playerGreen">#53A825</color>
+    <color name="dealerGreen">#43881F</color>
+    <color name="cardWhite">#E4E7E2</color>
+    <color name="popUpGrey">#D9DBD8</color>
+
+    <!-- Cards -->
+    <color name="cardBackStart">#E74C3C</color>
+    <color name="cardBackEnd">#B03A2E</color>
+    <color name="cardFrontStart">#F2F4F4</color>
+    <color name="cardFrontEnd">#CCD1D1</color>
+
+    <!-- Buttons -->
+    <color name="gameButtonStart">#F1C40F</color>
+    <color name="gameButtonEnd">#F7DC6F</color>
+    <color name="gameButtonPressedStart">#F39C12</color>
+    <color name="gameButtonPressedEnd">#F8C471</color>
+    <color name="gameButtonDisabledStart">#808B96</color>
+    <color name="gameButtonDisabledEnd">#D5D8DC</color>
+
+    <!-- Background -->
+    <color name="gameBackgroundStart">#FFFAF0</color>
+    <color name="gameBackgroundEnd">#FDF5E6</color>
+</resources>

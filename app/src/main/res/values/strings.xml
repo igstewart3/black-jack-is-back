@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Blackjack is Back!</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="restart_game">Restart</string>
+    <string name="just_blackjack">Just Blackjack</string>
+    <string name="winning_streak">Winning Streak</string>
+    <string name="hit">Hit</string>
+    <string name="stay">Stay</string>
+</resources>

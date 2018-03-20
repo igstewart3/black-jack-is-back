@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="60dp"
+    android:layout_height="80dp"
+    android:layout_margin="@dimen/card_margin"
+    android:elevation="@dimen/card_elevation">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/card_shape_front"
+        android:clipToPadding="true"
+        android:layout_gravity="top"
+        android:id="@+id/frontLayout">
+
+        <TextView
+            android:id="@+id/numberText"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:textSize="@dimen/card_text"
+            android:textStyle="bold"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/suitImage"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="3dp"
+            android:layout_below="@id/numberText"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/card_shape_back"
+        android:clipToPadding="true"
+        android:layout_gravity="bottom"
+        android:id="@+id/backLayout" />
+
+</FrameLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/game_background"
+    tools:context="com.igstewart3.blackjack.GameActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/dealer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/dealerGreen"
+        android:layoutAnimation="@anim/layout_animation_slide_right"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        android:orientation="horizontal" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/player_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/playerGreen"
+        android:layoutAnimation="@anim/layout_animation_slide_right"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        android:orientation="horizontal" />
+
+    <RelativeLayout
+        android:id="@+id/outcome_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@color/popUpGrey"
+        android:elevation="@dimen/outcome_elevation"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/outcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/outcome_text_margin"
+            android:textSize="@dimen/outcome_text_size" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/outcome_text"
+            android:layout_centerHorizontal="true"
+            android:text="@string/restart_game"
+            android:onClick="restart"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/hit_button"
+        android:layout_width="60dp"
+        android:layout_height="125dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/button_right_semi"
+        android:alpha="0.9"
+        android:elevation="5dp"
+        android:text="@string/hit"
+        android:onClick="hitMe"/>
+
+    <Button
+        android:id="@+id/stay_button"
+        android:layout_width="60dp"
+        android:layout_height="125dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/button_left_semi"
+        android:alpha="0.9"
+        android:elevation="5dp"
+        android:text="@string/stay"
+        android:onClick="stay"/>
+
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="app_bar_height">200dp</dimen>
+    <dimen name="item_width">200dp</dimen>
+
+    <!-- Text -->
+    <dimen name="text_margin">16dp</dimen>
+
+    <!-- Cards -->
+    <dimen name="card_text">15sp</dimen>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_elevation">10dp</dimen>
+
+    <!-- Outcomes -->
+    <dimen name="outcome_text_size">50sp</dimen>
+    <dimen name="outcome_elevation">10dp</dimen>
+    <dimen name="outcome_text_margin">10dp</dimen>
+</resources>
