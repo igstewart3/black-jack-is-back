@@ -5,7 +5,7 @@ package com.igstewart3.blackjack.objects;
  *
  * Created by ianstewart on 16/02/2018.
  */
-public class Card extends Object
+public class Card
 {
     /* Spades */
     public static final Card SPADES_ACE   = new Card("A",  11, Suit.SPADES);

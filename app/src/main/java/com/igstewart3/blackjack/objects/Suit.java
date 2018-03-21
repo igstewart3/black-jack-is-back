@@ -1,24 +1,15 @@
 package com.igstewart3.blackjack.objects;
 
 /**
+ * Enum to represent Card suits.
+ *
  * Created by ianstewart on 16/02/2018.
  */
 
 public enum Suit
 {
-    DIAMONDS("D"),
-    CLUBS("C"),
-    HEARTS("C"),
-    SPADES("S");
-
-    private String suitTag;
-    Suit(String tag)
-    {
-        this.suitTag = tag;
-    }
-
-    public String getSuitTag()
-    {
-        return suitTag;
-    }
+    DIAMONDS,
+    CLUBS,
+    HEARTS,
+    SPADES
 }

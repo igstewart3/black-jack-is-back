@@ -124,4 +124,14 @@ public class Player implements Serializable
                 cardDisplayAdapter.setCardHidden(i, false);
         }
     }
+
+    /**
+     * Allows alternative display adapter to be provided if required.
+     *
+     * @param cardDisplayAdapter CardDisplayAdapter to use.
+     */
+    public void setCardDisplayAdapter(CardDisplayAdapter cardDisplayAdapter)
+    {
+        this.cardDisplayAdapter = cardDisplayAdapter;
+    }
 }
