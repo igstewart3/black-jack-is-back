@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.igstewart3.blackjack.R;
 import com.igstewart3.blackjack.objects.Card;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import java.util.List;
  *
  * Created by ianstewart on 17/03/2018.
  */
-public class CardDisplayAdapter extends RecyclerView.Adapter<CardDisplayAdapter.ViewHolder>
+public class CardDisplayAdapter extends RecyclerView.Adapter<CardDisplayAdapter.ViewHolder> implements Serializable
 {
 
     public class ViewHolder extends RecyclerView.ViewHolder

@@ -1,11 +1,13 @@
 package com.igstewart3.blackjack.objects;
 
+import java.io.Serializable;
+
 /**
  * Class to represent cards.
  *
  * Created by ianstewart on 16/02/2018.
  */
-public class Card
+public class Card implements Serializable
 {
     /* Spades */
     public static final Card SPADES_ACE   = new Card("A",  11, Suit.SPADES);
