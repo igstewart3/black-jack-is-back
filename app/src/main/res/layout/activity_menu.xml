@@ -4,11 +4,19 @@
     android:layout_height="match_parent"
     android:background="@color/playerGreen">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_alignParentTop="true"
+        android:paddingTop="25dp"
+        android:src="@drawable/animated_banner_image" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/just_blackjack"
-        android:onClick="mainGame"/>
+        android:onClick="mainGame"
+        android:id="@+id/button" />
 
 </RelativeLayout>

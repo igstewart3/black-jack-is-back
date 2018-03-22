@@ -28,6 +28,13 @@
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         android:orientation="horizontal" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/animated_banner_image"/>
+
     <RelativeLayout
         android:id="@+id/outcome_layout"
         android:layout_width="wrap_content"
