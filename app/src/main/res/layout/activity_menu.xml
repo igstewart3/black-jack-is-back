@@ -2,13 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/playerGreen">
+    android:background="@color/playerGreen"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.igstewart3.blackjack.MenuActivity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:layout_alignParentTop="true"
         android:paddingTop="25dp"
+        tools:ignore="ContentDescription"
         android:src="@drawable/animated_banner_image" />
 
     <Button
