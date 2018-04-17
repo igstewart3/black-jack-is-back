@@ -3,6 +3,7 @@ package com.igstewart3.blackjack;
 import com.igstewart3.blackjack.objects.Card;
 import com.igstewart3.blackjack.objects.Suit;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,39 +15,52 @@ import static org.junit.Assert.assertEquals;
  */
 public class CardUnitTest
 {
+    private Card diamondCard = null;
+    private Card clubCard = null;
+    private Card heartCard = null;
+    private Card spadeCard = null;
+
+    @Before
+    public void setUp() throws Exception
+    {
+        diamondCard = new Card("D", 16, Suit.DIAMONDS);
+        clubCard = new Card("C", 15, Suit.CLUBS);
+        heartCard = new Card("H", 14, Suit.HEARTS);
+        spadeCard = new Card("S", 13, Suit.SPADES);
+    }
+
     @Test
     public void testSymbol() throws Exception
     {
-        assertEquals("A", Card.CLUBS_ACE.getSymbol());
-        assertEquals("K", Card.SPADES_KING.getSymbol());
-        assertEquals("2", Card.DIAMONDS_TWO.getSymbol());
-        assertEquals("5", Card.HEARTS_FIVE.getSymbol());
+        assertEquals("D", diamondCard.getSymbol());
+        assertEquals("C", clubCard.getSymbol());
+        assertEquals("H", heartCard.getSymbol());
+        assertEquals("S", spadeCard.getSymbol());
     }
 
     @Test
     public void testNumber() throws Exception
     {
-        assertEquals(11, Card.CLUBS_ACE.getNumber());
-        assertEquals(10, Card.SPADES_KING.getNumber());
-        assertEquals(2, Card.DIAMONDS_TWO.getNumber());
-        assertEquals(5, Card.HEARTS_FIVE.getNumber());
+        assertEquals(16, diamondCard.getNumber());
+        assertEquals(15, clubCard.getNumber());
+        assertEquals(14, heartCard.getNumber());
+        assertEquals(13, spadeCard.getNumber());
     }
 
     @Test
     public void testSuit() throws Exception
     {
-        assertEquals(Suit.CLUBS, Card.CLUBS_ACE.getSuit());
-        assertEquals(Suit.SPADES, Card.SPADES_KING.getSuit());
-        assertEquals(Suit.DIAMONDS, Card.DIAMONDS_TWO.getSuit());
-        assertEquals(Suit.HEARTS, Card.HEARTS_FIVE.getSuit());
+        assertEquals(Suit.DIAMONDS, diamondCard.getSuit());
+        assertEquals(Suit.CLUBS, clubCard.getSuit());
+        assertEquals(Suit.HEARTS, heartCard.getSuit());
+        assertEquals(Suit.SPADES, spadeCard.getSuit());
     }
 
     @Test
     public void testHidden() throws Exception
     {
-        Card card = Card.CLUBS_FOUR;
-        assertEquals(false, card.isHidden());
-        card.setHidden(true);
-        assertEquals(true, card.isHidden());
+        assertEquals(false, diamondCard.isHidden());
+        diamondCard.setHidden(true);
+        assertEquals(true, diamondCard.isHidden());
     }
 }

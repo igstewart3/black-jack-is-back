@@ -38,7 +38,7 @@ public class PlayerUnitTest
     public void setUp() throws Exception
     {
         MockitoAnnotations.initMocks(this);
-        player = new Player("Test Name", false);
+        player = new Player("Test Name");
         player.setCardDisplayAdapter(cardDisplayAdapter);
     }
 
@@ -92,7 +92,7 @@ public class PlayerUnitTest
         when(cardDisplayAdapter.getCardList()).thenReturn(cards);
 
         List<Card> retCards = player.returnCards();
-        assertEquals(Card.CLUBS_EIGHT, cards.get(0));
+        assertEquals(Card.CLUBS_EIGHT, retCards.get(0));
 
         verify(cardDisplayAdapter).removeAllCards();
     }
@@ -120,7 +120,7 @@ public class PlayerUnitTest
 
         player.showHiddenCards();
 
-        verify(cardDisplayAdapter).setCardHidden(0, false);
-        verify(cardDisplayAdapter).setCardHidden(2, false);
+        verify(cardDisplayAdapter).revealCard(0);
+        verify(cardDisplayAdapter).revealCard(2);
     }
 }

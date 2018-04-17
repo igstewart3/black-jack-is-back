@@ -92,58 +92,51 @@ public class CardDisplayAdapter extends RecyclerView.Adapter<CardDisplayAdapter.
     public void onBindViewHolder(ViewHolder holder, int position)
     {
         final Card card = cardList.get(position);
-        if(card.isHidden())
+
+        holder.numberTextTopLeft.setText(card.getSymbol());
+        holder.numberTextBottomRight.setText(card.getSymbol());
+        switch (card.getSuit())
         {
-            showBack(holder, true);
+            case SPADES:
+            {
+                holder.suitImage.setImageResource(R.drawable.spades);
+                break;
+            }
+            case HEARTS:
+            {
+                holder.suitImage.setImageResource(R.drawable.clubs);
+                break;
+            }
+            case CLUBS:
+            {
+                holder.suitImage.setImageResource(R.drawable.hearts);
+                break;
+            }
+            case DIAMONDS:
+            {
+                holder.suitImage.setImageResource(R.drawable.diamonds);
+                break;
+            }
+        }
+
+        if(holder.getAdapterPosition() > lastPosition)
+        {
+            showBack(holder, card.isHidden());
+
+            Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.animation_slide_from_right);
+            holder.itemView.startAnimation(animation);
+            lastPosition = holder.getAdapterPosition();
         }
         else
         {
-            holder.numberTextTopLeft.setText(card.getSymbol());
-            holder.numberTextBottomRight.setText(card.getSymbol());
-            switch (card.getSuit())
-            {
-                case SPADES:
-                {
-                    holder.suitImage.setImageResource(R.drawable.spades);
-                    break;
-                }
-                case HEARTS:
-                {
-                    holder.suitImage.setImageResource(R.drawable.clubs);
-                    break;
-                }
-                case CLUBS:
-                {
-                    holder.suitImage.setImageResource(R.drawable.hearts);
-                    break;
-                }
-                case DIAMONDS:
-                {
-                    holder.suitImage.setImageResource(R.drawable.diamonds);
-                    break;
-                }
-            }
+            AnimatorSet outSet = (AnimatorSet) AnimatorInflater.loadAnimator(holder.itemView.getContext(), R.animator.animation_flip_out);
+            AnimatorSet inSet = (AnimatorSet) AnimatorInflater.loadAnimator(holder.itemView.getContext(), R.animator.animation_flip_in);
 
-            if(holder.getAdapterPosition() > lastPosition)
-            {
-                showBack(holder, false);
+            outSet.setTarget(holder.cardBack);
+            inSet.setTarget(holder.cardFront);
 
-                Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.animation_slide_from_right);
-                holder.itemView.startAnimation(animation);
-                lastPosition = holder.getAdapterPosition();
-            }
-            else
-            {
-                AnimatorSet outSet = (AnimatorSet) AnimatorInflater.loadAnimator(holder.itemView.getContext(), R.animator.animation_flip_out);
-                AnimatorSet inSet = (AnimatorSet) AnimatorInflater.loadAnimator(holder.itemView.getContext(), R.animator.animation_flip_in);
-
-                outSet.setTarget(holder.cardBack);
-                inSet.setTarget(holder.cardFront);
-
-                outSet.start();
-                inSet.start();
-            }
-
+            outSet.start();
+            inSet.start();
         }
     }
 

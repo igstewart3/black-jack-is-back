@@ -1,10 +1,11 @@
 package com.igstewart3.blackjack.objects;
 
+import com.igstewart3.blackjack.utilities.Constants;
+
 import java.io.Serializable;
 import java.security.SecureRandom;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
@@ -16,67 +17,8 @@ import java.util.List;
  */
 public class Deck implements Serializable
 {
-    private static final List<Card> unshuffledDeck = Arrays.asList(
-            Card.SPADES_ACE,
-            Card.SPADES_KING,
-            Card.SPADES_QUEEN,
-            Card.SPADES_JACK,
-            Card.SPADES_TEN,
-            Card.SPADES_NINE,
-            Card.SPADES_EIGHT,
-            Card.SPADES_SEVEN,
-            Card.SPADES_SIX,
-            Card.SPADES_FIVE,
-            Card.SPADES_FOUR,
-            Card.SPADES_THREE,
-            Card.SPADES_TWO,
-            Card.HEARTS_ACE,
-            Card.HEARTS_KING,
-            Card.HEARTS_QUEEN,
-            Card.HEARTS_JACK,
-            Card.HEARTS_TEN,
-            Card.HEARTS_NINE,
-            Card.HEARTS_EIGHT,
-            Card.HEARTS_SEVEN,
-            Card.HEARTS_SIX,
-            Card.HEARTS_FIVE,
-            Card.HEARTS_FOUR,
-            Card.HEARTS_THREE,
-            Card.HEARTS_TWO,
-            Card.CLUBS_ACE,
-            Card.CLUBS_KING,
-            Card.CLUBS_QUEEN,
-            Card.CLUBS_JACK,
-            Card.CLUBS_TEN,
-            Card.CLUBS_NINE,
-            Card.CLUBS_EIGHT,
-            Card.CLUBS_SEVEN,
-            Card.CLUBS_SIX,
-            Card.CLUBS_FIVE,
-            Card.CLUBS_FOUR,
-            Card.CLUBS_THREE,
-            Card.CLUBS_TWO,
-            Card.DIAMONDS_ACE,
-            Card.DIAMONDS_KING,
-            Card.DIAMONDS_QUEEN,
-            Card.DIAMONDS_JACK,
-            Card.DIAMONDS_TEN,
-            Card.DIAMONDS_NINE,
-            Card.DIAMONDS_EIGHT,
-            Card.DIAMONDS_SEVEN,
-            Card.DIAMONDS_SIX,
-            Card.DIAMONDS_FIVE,
-            Card.DIAMONDS_FOUR,
-            Card.DIAMONDS_THREE,
-            Card.DIAMONDS_TWO);
-
+    // Secure random for shuffling.
     private static final SecureRandom secureRandom = new SecureRandom();
-
-    // Number of decks used in game.
-    private static final int deckNumber = 6;
-
-    // Number of cards at which to shuffle deck.
-    private static final int RESHUFFLE_COUNT = 50;
 
     // The cards contained in the deck.
     private Deque<Card> cards;
@@ -97,12 +39,22 @@ public class Deck implements Serializable
     /**
      * Creates a new Deck instance, adding the required cards and decks and shuffling the cards.
      */
-    private Deck()
-    {
+    private Deck() {
         this.cards = new ArrayDeque<>();
         this.usedCards = new ArrayList<>();
-        for (int i = 0; i < deckNumber; i++)
-            this.cards.addAll(unshuffledDeck);
+
+        // Card values
+        String[] symbols = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+        int[] values     = {  2,   3,   4,   5,   6,   7,   8,   9,   10,  10,  10,  10,  11};
+
+        // Create cards for deck
+        for (int i = 0; i < Constants.DECK_COUNT; i++) {
+            for (Suit suit : Suit.values()) {
+                for (int j = 0; j < symbols.length; j++) {
+                    this.cards.add(new Card(symbols[j], values[j], suit));
+                }
+            }
+        }
         shuffleDeck();
     }
 
@@ -111,9 +63,8 @@ public class Deck implements Serializable
      *
      * @return the first card in the deck.
      */
-    public Card getCard() throws IllegalArgumentException
-    {
-        if(cards.size() < RESHUFFLE_COUNT)
+    public Card getCard() throws IllegalArgumentException {
+        if(cards.size() < Constants.RESHUFFLE_COUNT)
             shuffleDeck();
         return this.cards.pollFirst();
     }
@@ -131,8 +82,7 @@ public class Deck implements Serializable
     /**
      * Shuffles the deck to randomise the cards.
      */
-    private void shuffleDeck()
-    {
+    private void shuffleDeck() {
         List<Card> temp = new ArrayList<>(cards);
         temp.addAll(usedCards);
         usedCards.clear();

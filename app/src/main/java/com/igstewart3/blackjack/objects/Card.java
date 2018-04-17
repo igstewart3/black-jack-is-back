@@ -81,7 +81,7 @@ public class Card implements Serializable
      * @param number The value of the card.
      * @param suit The suit of the card.
      */
-    private Card(String symbol, int number, Suit suit)
+    public Card(String symbol, int number, Suit suit)
     {
         this.symbol = symbol;
         this.number = number;
