@@ -25,10 +25,10 @@ public class Player implements Serializable
      *
      * @param name Player name.
      */
-    public Player(String name, boolean dealer)
+    public Player(String name)
     {
         this.name = name;
-        this.cardDisplayAdapter = new CardDisplayAdapter(dealer);
+        this.cardDisplayAdapter = new CardDisplayAdapter();
     }
 
     /**
@@ -57,13 +57,12 @@ public class Player implements Serializable
                 aceCount++;
             total += card.getNumber();
         }
-        if(total > 21)
+        for(int i = 0; i < aceCount; i++)
         {
-            for(int i = 0; i < aceCount; i++)
-            {
-                if(total > 21)
-                    total -= 10;
-            }
+            if(total > 21)
+                total -= 10;
+            else
+                break;
         }
         return total;
     }
@@ -121,7 +120,7 @@ public class Player implements Serializable
         for(int i = 0; i < cards.size(); i++)
         {
             if(cards.get(i).isHidden())
-                cardDisplayAdapter.setCardHidden(i, false);
+                cardDisplayAdapter.revealCard(i);
         }
     }
 

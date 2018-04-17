@@ -3,5 +3,6 @@
     <integer name="slide_from_right_duration">750</integer>
     <integer name="flip_full_duration">500</integer>
     <integer name="flip_half_duration">250</integer>
+    <integer name="fade_duration">750</integer>
 
 </resources>

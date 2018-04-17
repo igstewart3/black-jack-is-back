@@ -1,6 +1,8 @@
 package com.igstewart3.blackjack.utilities;
 
 /**
+ * Constants for use throughout app.
+ *
  * Created by ianstewart on 20/03/2018.
  */
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="60dp"
     android:layout_height="80dp"
     android:layout_margin="@dimen/card_margin"
@@ -8,13 +9,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/card_shape_front"
+        android:background="@drawable/card_base_front"
         android:clipToPadding="true"
         android:layout_gravity="top"
         android:id="@+id/frontLayout">
 
         <TextView
-            android:id="@+id/numberText"
+            android:id="@+id/numberTextTopLeft"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentTop="true"
@@ -23,20 +24,30 @@
             android:textStyle="bold"
             android:textAlignment="center" />
 
+        <TextView
+            android:id="@+id/numberTextBottomRight"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/card_text"
+            android:textStyle="bold"
+            android:textAlignment="center" />
+
         <ImageView
             android:id="@+id/suitImage"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:layout_alignParentStart="true"
-            android:paddingLeft="3dp"
-            android:layout_below="@id/numberText"/>
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            tools:ignore="ContentDescription" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/card_shape_back"
+        android:background="@drawable/card_base_back"
         android:clipToPadding="true"
         android:layout_gravity="bottom"
         android:id="@+id/backLayout" />

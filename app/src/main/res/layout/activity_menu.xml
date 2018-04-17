@@ -12,12 +12,13 @@
         android:layout_alignParentTop="true"
         android:paddingTop="25dp"
         tools:ignore="ContentDescription"
-        android:src="@drawable/animated_banner_image" />
+        android:src="@drawable/title_image" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
         android:layout_centerInParent="true"
+        android:background="@drawable/button_full"
         android:text="@string/just_blackjack"
         android:onClick="mainGame"
         android:id="@+id/button" />

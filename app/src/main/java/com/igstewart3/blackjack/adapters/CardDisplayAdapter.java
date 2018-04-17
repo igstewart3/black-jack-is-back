@@ -27,46 +27,39 @@ import java.util.List;
 public class CardDisplayAdapter extends RecyclerView.Adapter<CardDisplayAdapter.ViewHolder> implements Serializable
 {
 
-    public class ViewHolder extends RecyclerView.ViewHolder
+    class ViewHolder extends RecyclerView.ViewHolder
     {
-        public RelativeLayout cardFront;
-        public RelativeLayout cardBack;
-        public TextView numberText;
-        public ImageView suitImage;
+        RelativeLayout cardFront;
+        RelativeLayout cardBack;
+        TextView numberTextTopLeft;
+        TextView numberTextBottomRight;
+        ImageView suitImage;
 
-        public ViewHolder(View v)
+        ViewHolder(View v)
         {
             super(v);
-            cardFront = (RelativeLayout)v.findViewById(R.id.frontLayout);
-            cardBack = (RelativeLayout)v.findViewById(R.id.backLayout);
-            numberText = (TextView)v.findViewById(R.id.numberText);
-            suitImage = (ImageView)v.findViewById(R.id.suitImage);
+            cardFront = v.findViewById(R.id.frontLayout);
+            cardBack = v.findViewById(R.id.backLayout);
+            numberTextTopLeft = v.findViewById(R.id.numberTextTopLeft);
+            numberTextBottomRight = v.findViewById(R.id.numberTextBottomRight);
+            suitImage = v.findViewById(R.id.suitImage);
         }
     }
 
     // Cards to display.
     private List<Card> cardList;
-    // True if this is the dealer's adapter.
-    private boolean dealerAdapter = false;
     // Keep track of last position.
     private int lastPosition = -1;
 
-    public CardDisplayAdapter(boolean dealerAdapter)
+    public CardDisplayAdapter()
     {
-        cardList = new ArrayList<Card>();
-        this.dealerAdapter = dealerAdapter;
+        cardList = new ArrayList<>();
     }
 
     public void addCard(Card card)
     {
         cardList.add(card);
         notifyItemChanged(cardList.size() - 1);
-    }
-
-    public void removeCard(int position)
-    {
-        cardList.remove(position);
-        notifyItemChanged(position);
     }
 
     public void removeAllCards()
@@ -77,9 +70,9 @@ public class CardDisplayAdapter extends RecyclerView.Adapter<CardDisplayAdapter.
         notifyItemRangeChanged(0, count);
     }
 
-    public void setCardHidden(int position, boolean hidden)
+    public void revealCard(int position)
     {
-        cardList.get(position).setHidden(hidden);
+        cardList.get(position).setHidden(false);
         notifyItemChanged(position);
     }
 
@@ -92,8 +85,7 @@ public class CardDisplayAdapter extends RecyclerView.Adapter<CardDisplayAdapter.
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_content, parent, false);
-        ViewHolder viewHolder = new ViewHolder(v);
-        return viewHolder;
+        return new ViewHolder(v);
     }
 
     @Override
@@ -106,7 +98,8 @@ public class CardDisplayAdapter extends RecyclerView.Adapter<CardDisplayAdapter.
         }
         else
         {
-            holder.numberText.setText(card.getSymbol());
+            holder.numberTextTopLeft.setText(card.getSymbol());
+            holder.numberTextBottomRight.setText(card.getSymbol());
             switch (card.getSuit())
             {
                 case SPADES:
@@ -131,13 +124,13 @@ public class CardDisplayAdapter extends RecyclerView.Adapter<CardDisplayAdapter.
                 }
             }
 
-            if(position > lastPosition)
+            if(holder.getAdapterPosition() > lastPosition)
             {
                 showBack(holder, false);
 
                 Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.animation_slide_from_right);
                 holder.itemView.startAnimation(animation);
-                lastPosition = position;
+                lastPosition = holder.getAdapterPosition();
             }
             else
             {

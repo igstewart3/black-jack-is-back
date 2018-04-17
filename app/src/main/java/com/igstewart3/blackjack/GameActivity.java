@@ -3,9 +3,9 @@ package com.igstewart3.blackjack;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Fade;
+import android.transition.TransitionManager;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -122,8 +122,8 @@ public class GameActivity extends AppCompatActivity
             deck = Deck.getFullDeck();
 
             // Setup players
-            dealer = new Player(Constants.DEALER, true);
-            player = new Player("Player", false);
+            dealer = new Player(Constants.DEALER);
+            player = new Player(Constants.PLAYER);
 
             // Attach UIs
             dealer.setView(dealerLayout);
@@ -206,6 +206,8 @@ public class GameActivity extends AppCompatActivity
      */
     public void restart(View view)
     {
+        Fade fadeOut = new Fade(Fade.OUT);
+        TransitionManager.beginDelayedTransition(outcomeLayout, fadeOut);
         outcomeLayout.setVisibility(View.GONE);
 
         deck.returnCardsToDeck(dealer.returnCards());
@@ -307,6 +309,8 @@ public class GameActivity extends AppCompatActivity
     public void showOutcome(Outcome outcome)
     {
         outcomeText.setText(outcome.getOutcomeText());
+        Fade fadeIn = new Fade(Fade.IN);
+        TransitionManager.beginDelayedTransition(outcomeLayout, fadeIn);
         outcomeLayout.setVisibility(View.VISIBLE);
     }
 

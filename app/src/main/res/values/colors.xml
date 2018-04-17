@@ -6,7 +6,7 @@
     <color name="playerGreen">#53A825</color>
     <color name="dealerGreen">#43881F</color>
     <color name="cardWhite">#E4E7E2</color>
-    <color name="popUpGrey">#D9DBD8</color>
+    <color name="outcomeText">#000000</color>
 
     <!-- Cards -->
     <color name="cardBackStart">#E74C3C</color>

@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
-        android:background="@color/dealerGreen"
         android:layoutAnimation="@anim/layout_animation_slide_right"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         android:orientation="horizontal" />
@@ -23,28 +22,28 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/playerGreen"
         android:layoutAnimation="@anim/layout_animation_slide_right"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        android:clipToPadding="false"/>
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         tools:ignore="ContentDescription"
-        android:src="@drawable/animated_banner_image"/>
+        android:src="@drawable/card_deck"/>
 
     <RelativeLayout
         android:id="@+id/outcome_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@color/popUpGrey"
-        android:elevation="@dimen/outcome_elevation"
-        android:visibility="gone" >
+        android:background="@drawable/outcome_display"
+        android:visibility="gone"
+        android:elevation="@dimen/outcome_elevation">
 
         <TextView
             android:id="@+id/outcome_text"
@@ -53,13 +52,15 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
             android:layout_margin="@dimen/outcome_text_margin"
-            android:textSize="@dimen/outcome_text_size" />
+            android:textSize="@dimen/outcome_text_size"
+            android:textColor="@color/outcomeText"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
             android:layout_below="@id/outcome_text"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/button_full"
             android:text="@string/restart_game"
             android:onClick="restart"/>
 
@@ -67,8 +68,8 @@
 
     <Button
         android:id="@+id/hit_button"
-        android:layout_width="60dp"
-        android:layout_height="125dp"
+        android:layout_width="70dp"
+        android:layout_height="140dp"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:background="@drawable/button_right_semi"
@@ -79,8 +80,8 @@
 
     <Button
         android:id="@+id/stay_button"
-        android:layout_width="60dp"
-        android:layout_height="125dp"
+        android:layout_width="70dp"
+        android:layout_height="140dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:background="@drawable/button_left_semi"
