@@ -196,7 +196,7 @@ public class GameActivity extends AppCompatActivity
         enableButtons(false);
 
         // Dealer turn to play
-        dealerPlay(view != null);
+        dealerPlay();
     }
 
     /**
@@ -233,31 +233,22 @@ public class GameActivity extends AppCompatActivity
 
     /**
      * Starts the dealers turn.
-     *
-     * @param playOutHand True if the dealer needs to deal cards to himself to finish the round.
      */
-    public void dealerPlay(boolean playOutHand)
+    public void dealerPlay()
     {
         dealer.showHiddenCards();
 
-        if(playOutHand)
-        {
-            timer = new Timer();
-            timer.schedule(new DealerTimerTask(), 1000, 1000);
-        }
-        else
-        {
-            showOutcome(Outcome.BUST);
-        }
+        timer = new Timer();
+        timer.schedule(new DealerTimerTask(), 1000, 1000);
     }
 
     /**
-     * Plays the dealers turn, adding cards until either all the players are defeated, the dealer
-     * is bust or 17 is reached (dealer stays at 17).
+     * Plays the dealers turn, adding cards (if player is not bust) until either the dealer
+     * is bust or 17 or more is reached.
      */
     public void dealerTurn()
     {
-        if(dealer.getTotal() >= DEALER_STAY)
+        if(dealer.getTotal() >= DEALER_STAY || player.getTotal() > BLACK_JACK)
         {
             timer.cancel();
             endGame();
@@ -293,10 +284,12 @@ public class GameActivity extends AppCompatActivity
 
         if(playerTotal <= BLACK_JACK && (playerTotal > dealerTotal || dealerTotal > BLACK_JACK))
             outcome = Outcome.WIN;
-        else if(playerTotal > BLACK_JACK || playerTotal < dealerTotal)
+        else if(playerTotal < dealerTotal)
             outcome = Outcome.LOSE;
-        else
+        else if(playerTotal == dealerTotal)
             outcome = Outcome.DRAW;
+        else
+            outcome = Outcome.BUST;
 
         showOutcome(outcome);
     }
